@@ -1,181 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Manav Kumar Jha | Data Analyst Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f3f4f6;
-            color: #1f2937;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Manav Kumar Jha | Portfolio</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#0f172a;color:#e5e7eb;line-height:1.6}
+nav{position:sticky;top:0;background:#111827;padding:18px 8%;display:flex;justify-content:space-between;align-items:center}
+nav a{color:#fff;text-decoration:none;margin-left:20px;transition:.3s}
+nav a:hover{color:#38bdf8}
+.hero{padding:90px 8%;text-align:center;background:linear-gradient(135deg,#1e3a8a,#0f172a)}
+.hero h1{font-size:52px}.hero span{color:#38bdf8}
+.btn{display:inline-block;margin:10px;padding:12px 22px;border-radius:8px;background:#38bdf8;color:#000;text-decoration:none;font-weight:bold;transition:.3s}
+.btn:hover{background:#0ea5e9;color:#fff}
+section{padding:70px 8%}
+h2{color:#38bdf8;margin-bottom:20px;text-align:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.card{background:#1f2937;padding:20px;border-radius:12px;transition:.3s;box-shadow:0 4px 10px rgba(0,0,0,0.3)}
+.card:hover{transform:translateY(-6px);box-shadow:0 6px 14px rgba(0,0,0,0.4)}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px}
+.skill{background:#1f2937;padding:12px;border-radius:8px;position:relative;overflow:hidden}
+.skill span{display:block;font-weight:bold;margin-bottom:8px;color:#38bdf8}
+.bar{height:8px;background:#2563eb;border-radius:4px;overflow:hidden}
+.fill{height:100%;background:#38bdf8;width:0;animation:grow 2s forwards}
+@keyframes grow{from{width:0}to{width:var(--level)}}
+ul{list-style:none;padding:0}
+li{background:#1f2937;margin:10px 0;padding:12px;border-radius:8px}
+footer{text-align:center;padding:30px;background:#111827}
+.icon{margin-right:8px;color:#38bdf8}
+</style>
 </head>
+<body>
 
-<body class="antialiased">
+<nav>
+  <h3>Manav Kumar Jha</h3>
+  <div>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
 
-    <!-- Navigation Bar -->
-    <nav class="bg-white shadow-md py-4 sticky top-0 z-50">
-        <div class="container mx-auto px-4 md:px-8 flex justify-between items-center max-w-6xl">
-            <a href="#" class="text-xl font-bold text-indigo-600">Manav Jha</a>
-            <div class="space-x-4">
-                <a href="#about" class="text-gray-700 hover:text-indigo-600">About</a>
-                <a href="#skills" class="text-gray-700 hover:text-indigo-600">Skills</a>
-                <a href="#projects" class="text-gray-700 hover:text-indigo-600">Projects</a>
-                <a href="#certifications" class="text-gray-700 hover:text-indigo-600">Certifications</a>
-                <a href="#contact" class="text-gray-700 hover:text-indigo-600">Contact</a>
-            </div>
-        </div>
-    </nav>
+<section class="hero">
+  <h1>Hi, I'm <span>Manav Kumar Jha</span></h1>
+  <h3>Data Analyst • Machine Learning Enthusiast</h3>
+  <p>Python • SQL • Power BI • Machine Learning • Data Visualization</p>
+  <a class="btn" href="#projects">View Projects</a>
+</section>
 
-    <!-- Hero Section -->
-    <header class="bg-white shadow-sm py-16">
-        <div class="container mx-auto px-4 md:px-8 max-w-6xl">
-            <div class="flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
-                <div class="text-center md:text-left">
-                    <h1 class="text-4xl font-bold text-gray-900">MANAV KUMAR JHA</h1>
-                    <p class="text-xl text-gray-600 mt-2">Data Analyst | Computer Science Graduate</p>
-                </div>
-                <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 text-center">
-                    <a href="https://linkedin.com/in/manav79" target="_blank" class="px-6 py-2 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-colors">LinkedIn</a>
-                    <a href="https://github.com/Manavjha20" target="_blank" class="px-6 py-2 bg-gray-800 text-white font-semibold rounded-full hover:bg-gray-900 transition-colors">GitHub</a>
-                </div>
-            </div>
-        </div>
-    </header>
+<section id="about">
+  <h2>About Me</h2>
+  <p>Data Analyst and aspiring ML practitioner with hands-on experience in Python, SQL, Power BI, dashboard development, data cleaning, EDA and predictive analytics. Machine Learning Intern at NIT Surathkal with experience building YOLO-based traffic monitoring systems.</p>
+</section>
 
-    <!-- About Section -->
-    <section id="about" class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4 md:px-8 max-w-4xl">
-            <div class="bg-white p-8 rounded-lg shadow-md border border-gray-200">
-                <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-indigo-500 pb-2">About Me</h2>
-                <p class="text-gray-700 leading-relaxed">
-                    A recent Computer Science graduate passionate about data-driven insights. I am skilled in database management, data analytics, and machine learning, with a strong foundation in Python, SQL, and data visualization tools. My goal is to apply my analytical skills to solve complex business problems and drive meaningful impact.
-                </p>
-            </div>
-        </div>
-    </section>
+<section id="skills">
+  <h2>Technical Skills</h2>
+  <div class="skills">
+    <div class="skill"><span>Python</span><div class="bar"><div class="fill" style="--level:90%"></div></div></div>
+    <div class="skill"><span>SQL</span><div class="bar"><div class="fill" style="--level:85%"></div></div></div>
+    <div class="skill"><span>Power BI</span><div class="bar"><div class="fill" style="--level:80%"></div></div></div>
+    <div class="skill"><span>Tableau</span><div class="bar"><div class="fill" style="--level:70%"></div></div></div>
+    <div class="skill"><span>Pandas</span><div class="bar"><div class="fill" style="--level:90%"></div></div></div>
+    <div class="skill"><span>NumPy</span><div class="bar"><div class="fill" style="--level:85%"></div></div></div>
+    <div class="skill"><span>Scikit-learn</span><div class="bar"><div class="fill" style="--level:80%"></div></div></div>
+    <div class="skill"><span>YOLO</span><div class="bar"><div class="fill" style="--level:75%"></div></div></div>
+    <div class="skill"><span>OpenCV</span><div class="bar"><div class="fill" style="--level:80%"></div></div></div>
+    <div class="skill"><span>Excel</span><div class="bar"><div class="fill" style="--level:85%"></div></div></div>
+    <div class="skill"><span>Git</span><div class="bar"><div class="fill" style="--level:70%"></div></div></div>
+    <div class="skill"><span>BeautifulSoup</span><div class="bar"><div class="fill" style="--level:75%"></div></div></div>
+  </div>
+</section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="py-16">
-        <div class="container mx-auto px-4 md:px-8 max-w-4xl">
-            <div class="bg-white p-8 rounded-lg shadow-md border border-gray-200">
-                <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-indigo-500 pb-2">Skills</h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                    <div>
-                        <h3 class="font-semibold text-lg text-gray-800 mb-2">Programming & Tools</h3>
-                        <ul class="list-disc list-inside space-y-1 text-gray-600">
-                            <li>Python (NumPy, Pandas, Scikit-Learn)</li>
-                            <li>SQL</li>
-                            <li>Jupyter Notebook</li>
-                            <li>Git/GitHub</li>
-                            <li>Excel</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 class="font-semibold text-lg text-gray-800 mb-2">Data & BI Tools</h3>
-                        <ul class="list-disc list-inside space-y-1 text-gray-600">
-                            <li>Power BI</li>
-                            <li>Tableau</li>
-                            <li>Matplotlib & Seaborn</li>
-                            <li>Data Cleaning</li>
-                            <li>Data Analysis</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 class="font-semibold text-lg text-gray-800 mb-2">Soft Skills</h3>
-                        <ul class="list-disc list-inside space-y-1 text-gray-600">
-                            <li>Critical Thinking</li>
-                            <li>Adaptability</li>
-                            <li>Communication</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<section id="projects">
+  <h2>Featured Projects</h2>
+  <div class="grid">
+    <div class="card"><h3>E-Commerce Recommendation Engine</h3><p>Designed a customer segmentation model using <strong>RFM analysis</strong> and <strong>K-Means clustering</strong> to identify high-value customers. Built a <strong>Power BI dashboard</strong> to visualize segments and recommend personalized offers, improving retention strategies.</p></div>
+    <div class="card"><h3>Logistics Route Analysis</h3><p>Optimized delivery routes by writing <strong>advanced SQL queries</strong> with <strong>CTEs, joins, and window functions</strong>. Reduced query execution time by 30% and provided actionable insights for cost-efficient logistics planning.</p></div>
+    <div class="card"><h3>Sales Dashboard</h3><p>Developed an <strong>interactive Power BI dashboard</strong> with KPIs, slicers, and <strong>DAX measures</strong> to track regional sales performance. Enabled management to monitor trends and make data-driven decisions in real time.</p></div>
+    <div class="card"><h3>Book Price Prediction</h3><p>Scraped book data using <strong>BeautifulSoup</strong>, cleaned datasets with <strong>Pandas</strong>, and applied <strong>Linear Regression</strong> to predict book prices. Achieved a prediction accuracy of ~85%, showcasing end-to-end data pipeline skills.</p></div>
+    <div class="card"><h3>YOLO Vehicle Detection</h3><p>Built a <strong>real-time vehicle detection system</strong> during internship at NIT Surathkal using <strong>YOLOv5 and OpenCV</strong>. Achieved ~90% detection accuracy and analyzed traffic flow patterns from CCTV footage.</p></div>
+    <div class="card"><h3>Windows Virtual Assistant</h3><p>Created a <strong>voice-controlled desktop assistant</strong> in Python integrating <strong>speech recognition, text-to-speech, and automation libraries</strong>. Automated tasks like opening applications, searching the web, and sending emails.</p></div>
+  </div>
+</section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4 md:px-8 max-w-4xl">
-            <div class="bg-white p-8 rounded-lg shadow-md border border-gray-200">
-                <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-indigo-500 pb-2">Projects</h2>
+<section id="experience">
+  <h2>Experience</h2>
+  <div class="card">
+    <h3>Machine Learning Intern — NIT Surathkal</h3>
+    <p>Developed a <strong>YOLO-based vehicle detection and counting system</strong> achieving ~90% accuracy. Leveraged <strong>Python</strong> and <strong>OpenCV</strong> to analyze traffic flow patterns from CCTV footage, contributing to smart city traffic monitoring research.</p>
+  </div>
+</section>
 
-                <div class="mb-8">
-                    <img src="https://via.placeholder.com/800x400?text=Virtual+Assistant+Project" alt="Virtual Assistant Project" class="rounded-lg mb-4"/>
-                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Windows-Based Virtual Assistant</h3>
-                    <p class="text-gray-600 leading-relaxed mb-4">
-                        Developed a voice-activated virtual assistant for Windows, enabling hands-free control of applications. Implemented scripting and system integration to enhance productivity.
-                    </p>
-                    <a href="https://github.com/Manavjha20/Virtual-Assistant" target="_blank" class="text-indigo-600 hover:underline font-medium">View Project on GitHub →</a>
-                </div>
-
-                <div class="mb-8">
-                    <img src="https://via.placeholder.com/800x400?text=EDA+Project" alt="EDA Project" class="rounded-lg mb-4"/>
-                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Exploratory Data Analysis (EDA)</h3>
-                    <p class="text-gray-600 leading-relaxed mb-4">
-                        Cleaned and transformed raw datasets to improve quality and conducted in-depth analysis using Pandas, Matplotlib, and Seaborn to discover key trends and customer segments.
-                    </p>
-                    <a href="#" class="text-indigo-600 hover:underline font-medium">View Project on GitHub →</a>
-                </div>
-
-                <div>
-                    <img src="https://via.placeholder.com/800x400?text=ML+Traffic+Monitoring" alt="Traffic Monitoring Project" class="rounded-lg mb-4"/>
-                    <h3 class="text-2xl font-bold text-gray-800 mb-2">ML-Based Traffic Monitoring</h3>
-                    <p class="text-gray-600 leading-relaxed mb-4">
-                        Built a YOLO-based vehicle detection system to classify and count vehicles in real-time from CCTV footage, providing valuable traffic insights to campus management.
-                    </p>
-                    <a href="#" class="text-indigo-600 hover:underline font-medium">View Project on GitHub →</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Certifications Section -->
-    <section id="certifications" class="py-16">
-        <div class="container mx-auto px-4 md:px-8 max-w-4xl">
-            <div class="bg-white p-8 rounded-lg shadow-md border border-gray-200">
-                <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-indigo-500 pb-2">Certifications & Achievements</h2>
-                <ul class="list-disc list-inside space-y-2 text-gray-700 leading-relaxed">
-                    <li>Accenture North America Data Analytics and Visualization Job Simulation (Forage)</li>
-                    <li>Introduction to Artificial Intelligence - Infosys</li>
-                    <li>Introduction to Natural Language Processing - Infosys</li>
-                    <li>Introduction to Data Science - Simplilearn</li>
-                    <li>Fundamentals of Deep Learning - Nvidia</li>
-                    <li>Basic Python Certification - HackerRank</li>
-                    <li>Basic SQL Certification - HackerRank</li>
-                    <li>Letter of recommendation from NIT Surathkal for ML traffic monitoring contribution.</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4 md:px-8 max-w-4xl">
-            <div class="bg-white p-8 rounded-lg shadow-md border border-gray-200">
-                <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-indigo-500 pb-2">Contact Me</h2>
-                <form class="space-y-4" action="mailto:manav@example.com" method="POST" enctype="text/plain">
-                    <input type="text" name="name" placeholder="Your Name" required class="w-full p-3 border border-gray-300 rounded"/>
-                    <input type="email" name="email" placeholder="Your Email" required class="w-full p-3 border border-gray-300 rounded"/>
-                    <textarea name="message" placeholder="Your Message" rows="5" required class="w-full p-3 border border-gray-300 rounded"></textarea>
-                    <button type="submit" class="px-6 py-2 bg-indigo-600 text-white font-semibold rounded hover:bg-indigo-700 transition-colors">Send Message</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer Section -->
-    <footer class="bg-gray-800 text-white py-6">
-        <div class="container mx-auto px-4 md:px-8 text-center">
-            <p>&copy; 2024 Manav Kumar Jha. All rights reserved.</p>
-        </div>
-    </footer>
-
-</body>
-
-</html>
+<section id="certifications">
+  <h2>Certifications</h2>
+  <ul>
+    <li><span class="icon">🎓</span><strong>Data Science with AI – Internshala:</strong> Completed a structured program covering <strong>Python, ML algorithms, and data visualization</strong>, applying concepts to real-world datasets.</li>
+    <li><span class="icon">🏢</span><strong>Accenture Data Analytics Simulation – For
