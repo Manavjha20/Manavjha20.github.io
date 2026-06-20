@@ -2,101 +2,474 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Manav Kumar Jha | Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manav Kumar Jha | Data Analyst & ML Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{background:#0f172a;color:#e5e7eb;line-height:1.6}
-nav{position:sticky;top:0;background:#111827;padding:18px 8%;display:flex;justify-content:space-between;align-items:center}
-nav a{color:#fff;text-decoration:none;margin-left:20px;transition:.3s}
-nav a:hover{color:#38bdf8}
-.hero{padding:90px 8%;text-align:center;background:linear-gradient(135deg,#1e3a8a,#0f172a)}
-.hero h1{font-size:52px}.hero span{color:#38bdf8}
-.btn{display:inline-block;margin:10px;padding:12px 22px;border-radius:8px;background:#38bdf8;color:#000;text-decoration:none;font-weight:bold;transition:.3s}
-.btn:hover{background:#0ea5e9;color:#fff}
-section{padding:70px 8%}
-h2{color:#38bdf8;margin-bottom:20px;text-align:center}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
-.card{background:#1f2937;padding:20px;border-radius:12px;transition:.3s;box-shadow:0 4px 10px rgba(0,0,0,0.3)}
-.card:hover{transform:translateY(-6px);box-shadow:0 6px 14px rgba(0,0,0,0.4)}
-.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px}
-.skill{background:#1f2937;padding:12px;border-radius:8px;position:relative;overflow:hidden}
-.skill span{display:block;font-weight:bold;margin-bottom:8px;color:#38bdf8}
-.bar{height:8px;background:#2563eb;border-radius:4px;overflow:hidden}
-.fill{height:100%;background:#38bdf8;width:0;animation:grow 2s forwards}
-@keyframes grow{from{width:0}to{width:var(--level)}}
-ul{list-style:none;padding:0}
-li{background:#1f2937;margin:10px 0;padding:12px;border-radius:8px}
-footer{text-align:center;padding:30px;background:#111827}
-.icon{margin-right:8px;color:#38bdf8}
+  :root{
+    --bg: #FAF7F1;
+    --bg-soft: #F1ECE2;
+    --ink: #20242B;
+    --ink-soft: #5B6068;
+    --line: #DAD2C0;
+    --teal: #0E6F63;
+    --teal-soft: #E3EFEC;
+    --amber: #C97A1D;
+    --amber-soft: #F5E6D3;
+    --radius: 4px;
+    --maxw: 920px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    font-size:16px;
+  }
+  ::selection{ background: var(--teal); color:#fff; }
+
+  /* dot grid background for hero */
+  .hero{
+    position:relative;
+    padding:96px 24px 72px;
+    overflow:hidden;
+    border-bottom:1px solid var(--line);
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image: radial-gradient(circle, #C7BFA9 1px, transparent 1px);
+    background-size: 22px 22px;
+    opacity:0.45;
+    mask-image: linear-gradient(to bottom, black, transparent 85%);
+  }
+  .wrap{ max-width:var(--maxw); margin:0 auto; position:relative; z-index:1; }
+
+  nav{
+    position:sticky; top:0; z-index:10;
+    background:rgba(250,247,241,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 24px;
+    max-width:var(--maxw);
+  }
+  nav .brand{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700; font-size:18px; letter-spacing:-0.02em;
+    color:var(--ink); text-decoration:none;
+  }
+  nav ul{ display:flex; gap:28px; list-style:none; }
+  nav a{ color:var(--ink-soft); text-decoration:none; font-size:14px; font-weight:500; transition:color .15s; }
+  nav a:hover, nav a:focus-visible{ color:var(--teal); }
+  .nav-toggle{ display:none; }
+
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px; color:var(--teal);
+    letter-spacing:0.02em;
+    margin-bottom:18px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{ content:"//"; color:var(--amber); }
+
+  h1.name{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:clamp(40px, 7vw, 68px);
+    font-weight:700;
+    letter-spacing:-0.02em;
+    line-height:1.04;
+    color:var(--ink);
+  }
+  .role{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:clamp(18px, 2.4vw, 24px);
+    color:var(--teal);
+    font-weight:500;
+    margin-top:10px;
+  }
+  .pitch{
+    max-width:560px;
+    margin-top:22px;
+    color:var(--ink-soft);
+    font-size:16.5px;
+  }
+
+  .stat-row{
+    display:flex; flex-wrap:wrap; gap:0;
+    margin-top:40px;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+    background:#fff;
+  }
+  .stat{
+    flex:1; min-width:130px;
+    padding:16px 20px;
+    border-right:1px solid var(--line);
+  }
+  .stat:last-child{ border-right:none; }
+  .stat .num{
+    font-family:'JetBrains Mono', monospace;
+    font-size:22px; font-weight:600; color:var(--ink);
+  }
+  .stat .lbl{
+    font-size:12.5px; color:var(--ink-soft); margin-top:2px;
+  }
+
+  .links{ display:flex; gap:14px; margin-top:32px; flex-wrap:wrap; }
+  .btn{
+    font-family:'Inter', sans-serif;
+    font-weight:600; font-size:14.5px;
+    padding:11px 22px;
+    border-radius:var(--radius);
+    text-decoration:none;
+    display:inline-flex; align-items:center; gap:8px;
+    transition: transform .12s ease, box-shadow .12s ease;
+  }
+  .btn:hover{ transform:translateY(-1px); }
+  .btn-primary{ background:var(--ink); color:#fff; }
+  .btn-primary:hover{ background:var(--teal); }
+  .btn-outline{ background:transparent; color:var(--ink); border:1px solid var(--line); }
+  .btn-outline:hover{ border-color:var(--teal); color:var(--teal); }
+
+  section{ padding:64px 24px; border-bottom:1px solid var(--line); }
+  section:last-of-type{ border-bottom:none; }
+
+  .section-head{ margin-bottom:36px; }
+  .section-num{
+    font-family:'JetBrains Mono', monospace;
+    color:var(--amber); font-size:13px; margin-bottom:8px; display:block;
+  }
+  h2{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:clamp(26px, 3.5vw, 34px);
+    font-weight:700;
+    letter-spacing:-0.01em;
+  }
+
+  .about-text{ max-width:680px; color:var(--ink-soft); font-size:16.5px; }
+  .about-text p + p{ margin-top:14px; }
+
+  .skills-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:24px;
+  }
+  .skill-card{
+    background:#fff; border:1px solid var(--line); border-radius:var(--radius);
+    padding:20px;
+  }
+  .skill-card h3{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px; text-transform:uppercase; letter-spacing:0.04em;
+    color:var(--teal); margin-bottom:12px;
+  }
+  .tag-list{ display:flex; flex-wrap:wrap; gap:8px; }
+  .tag{
+    background:var(--teal-soft); color:var(--teal);
+    font-size:13px; font-weight:500;
+    padding:5px 11px; border-radius:100px;
+  }
+  .skill-card.soft .tag{ background:var(--amber-soft); color:var(--amber); }
+
+  .project-list{ display:flex; flex-direction:column; gap:18px; }
+  .project{
+    background:#fff; border:1px solid var(--line); border-radius:var(--radius);
+    padding:26px 28px;
+    display:grid; grid-template-columns: 64px 1fr; gap:20px;
+  }
+  .project .pnum{
+    font-family:'JetBrains Mono', monospace;
+    color:var(--line); font-size:32px; font-weight:600; line-height:1;
+  }
+  .project h3{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:19px; font-weight:700; margin-bottom:4px;
+  }
+  .project .stack{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12.5px; color:var(--teal); margin-bottom:10px; display:block;
+  }
+  .project p{ color:var(--ink-soft); font-size:15px; margin-bottom:12px; }
+  .project a{
+    font-size:13.5px; font-weight:600; color:var(--ink);
+    text-decoration:none; border-bottom:1px solid var(--ink);
+  }
+  .project a:hover{ color:var(--teal); border-color:var(--teal); }
+
+  .cert-grid{
+    display:grid; grid-template-columns:repeat(2,1fr); gap:14px;
+  }
+  .cert{
+    display:flex; align-items:flex-start; gap:12px;
+    background:#fff; border:1px solid var(--line); border-radius:var(--radius);
+    padding:16px 18px;
+  }
+  .cert .dot{
+    width:8px; height:8px; border-radius:50%;
+    background:var(--amber); margin-top:6px; flex-shrink:0;
+  }
+  .cert .title{ font-weight:600; font-size:14.5px; }
+  .cert .org{ font-size:13px; color:var(--ink-soft); }
+
+  .contact-box{
+    background:var(--ink); color:#fff;
+    border-radius:var(--radius);
+    padding:48px 40px;
+    display:flex; flex-wrap:wrap; justify-content:space-between; gap:24px; align-items:center;
+  }
+  .contact-box h2{ color:#fff; }
+  .contact-box p{ color:#C7CBD1; max-width:380px; margin-top:8px; }
+  .contact-links{ display:flex; flex-direction:column; gap:10px; }
+  .contact-links a{
+    color:#fff; text-decoration:none; font-weight:500; font-size:15px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .contact-links a span{ color:var(--amber); font-family:'JetBrains Mono', monospace; font-size:13px; }
+  .contact-links a:hover{ text-decoration:underline; }
+
+  footer{
+    text-align:center; padding:28px 24px; color:var(--ink-soft); font-size:13px;
+  }
+
+  @media (max-width: 760px){
+    .skills-grid{ grid-template-columns:1fr; }
+    .cert-grid{ grid-template-columns:1fr; }
+    nav ul{ gap:16px; }
+    .project{ grid-template-columns:1fr; }
+    .contact-box{ flex-direction:column; align-items:flex-start; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+  }
 </style>
 </head>
 <body>
 
 <nav>
-  <h3>Manav Kumar Jha</h3>
-  <div>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#experience">Experience</a>
-    <a href="#certifications">Certifications</a>
-    <a href="#contact">Contact</a>
+  <div class="wrap">
+    <a class="brand" href="#">MKJ</a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
   </div>
 </nav>
 
-<section class="hero">
-  <h1>Hi, I'm <span>Manav Kumar Jha</span></h1>
-  <h3>Data Analyst • Machine Learning Enthusiast</h3>
-  <p>Python • SQL • Power BI • Machine Learning • Data Visualization</p>
-  <a class="btn" href="#projects">View Projects</a>
-</section>
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">DATA ANALYST &amp; ML PRACTITIONER</div>
+    <h1 class="name">Manav Kumar Jha</h1>
+    <div class="role">Turning raw data into decisions — Python, SQL &amp; Power BI</div>
+    <p class="pitch">Computer Science graduate building end-to-end data projects: cleaning messy datasets, modeling customer behavior, and shipping dashboards people actually use. ML internship experience in computer vision, plus hands-on work across analytics, segmentation, and forecasting.</p>
+
+    <div class="stat-row">
+      <div class="stat"><div class="num">6</div><div class="lbl">Projects shipped</div></div>
+      <div class="stat"><div class="num">8.9</div><div class="lbl">CGPA / 10</div></div>
+      <div class="stat"><div class="num">4+</div><div class="lbl">Certifications</div></div>
+      <div class="stat"><div class="num">1</div><div class="lbl">LOR — NIT Surathkal</div></div>
+    </div>
+
+    <div class="links">
+      <a class="btn btn-primary" href="mailto:meekermanav@gmail.com">Email Me</a>
+      <a class="btn btn-outline" href="https://linkedin.com/in/manav79" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="btn btn-outline" href="https://github.com/Manavjha20" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+  </div>
+</header>
 
 <section id="about">
-  <h2>About Me</h2>
-  <p>Data Analyst and aspiring ML practitioner with hands-on experience in Python, SQL, Power BI, dashboard development, data cleaning, EDA and predictive analytics. Machine Learning Intern at NIT Surathkal with experience building YOLO-based traffic monitoring systems.</p>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">01 / ABOUT</span>
+      <h2>What I do</h2>
+    </div>
+    <div class="about-text">
+      <p>I'm a Computer Science graduate from Aarupadai Veedu Institute of Technology, focused on data analysis and applied machine learning. My work spans the full pipeline: pulling and cleaning raw data, exploring it for patterns, building models when the question calls for one, and packaging the result into a dashboard or report someone can actually act on.</p>
+      <p>During my ML internship at NIT Surathkal, I built a YOLO-based vehicle detection system for traffic analysis from live CCTV footage — work that earned me a Letter of Recommendation. Since then I've applied the same rigor to customer segmentation, logistics performance, and sales reporting projects, using Python, SQL, and Power BI.</p>
+    </div>
+  </div>
 </section>
 
 <section id="skills">
-  <h2>Technical Skills</h2>
-  <div class="skills">
-    <div class="skill"><span>Python</span><div class="bar"><div class="fill" style="--level:90%"></div></div></div>
-    <div class="skill"><span>SQL</span><div class="bar"><div class="fill" style="--level:85%"></div></div></div>
-    <div class="skill"><span>Power BI</span><div class="bar"><div class="fill" style="--level:80%"></div></div></div>
-    <div class="skill"><span>Tableau</span><div class="bar"><div class="fill" style="--level:70%"></div></div></div>
-    <div class="skill"><span>Pandas</span><div class="bar"><div class="fill" style="--level:90%"></div></div></div>
-    <div class="skill"><span>NumPy</span><div class="bar"><div class="fill" style="--level:85%"></div></div></div>
-    <div class="skill"><span>Scikit-learn</span><div class="bar"><div class="fill" style="--level:80%"></div></div></div>
-    <div class="skill"><span>YOLO</span><div class="bar"><div class="fill" style="--level:75%"></div></div></div>
-    <div class="skill"><span>OpenCV</span><div class="bar"><div class="fill" style="--level:80%"></div></div></div>
-    <div class="skill"><span>Excel</span><div class="bar"><div class="fill" style="--level:85%"></div></div></div>
-    <div class="skill"><span>Git</span><div class="bar"><div class="fill" style="--level:70%"></div></div></div>
-    <div class="skill"><span>BeautifulSoup</span><div class="bar"><div class="fill" style="--level:75%"></div></div></div>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">02 / SKILLS</span>
+      <h2>Tools I reach for</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3>Programming &amp; Querying</h3>
+        <div class="tag-list">
+          <span class="tag">Python</span><span class="tag">SQL</span>
+          <span class="tag">Pandas</span><span class="tag">NumPy</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>ML &amp; Analysis</h3>
+        <div class="tag-list">
+          <span class="tag">Scikit-learn</span><span class="tag">K-Means</span>
+          <span class="tag">Linear Regression</span><span class="tag">OpenCV / YOLO</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Visualization &amp; BI</h3>
+        <div class="tag-list">
+          <span class="tag">Power BI (DAX)</span><span class="tag">Tableau</span>
+          <span class="tag">Matplotlib</span><span class="tag">Seaborn</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Data Engineering</h3>
+        <div class="tag-list">
+          <span class="tag">Data Cleaning</span><span class="tag">Web Scraping</span>
+          <span class="tag">BeautifulSoup</span><span class="tag">Excel</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Tooling</h3>
+        <div class="tag-list">
+          <span class="tag">Git/GitHub</span><span class="tag">Jupyter</span>
+          <span class="tag">VS Code</span>
+        </div>
+      </div>
+      <div class="skill-card soft">
+        <h3>Working style</h3>
+        <div class="tag-list">
+          <span class="tag">Critical thinking</span><span class="tag">Adaptability</span>
+          <span class="tag">Clear communication</span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
 <section id="projects">
-  <h2>Featured Projects</h2>
-  <div class="grid">
-    <div class="card"><h3>E-Commerce Recommendation Engine</h3><p>Designed a customer segmentation model using <strong>RFM analysis</strong> and <strong>K-Means clustering</strong> to identify high-value customers. Built a <strong>Power BI dashboard</strong> to visualize segments and recommend personalized offers, improving retention strategies.</p></div>
-    <div class="card"><h3>Logistics Route Analysis</h3><p>Optimized delivery routes by writing <strong>advanced SQL queries</strong> with <strong>CTEs, joins, and window functions</strong>. Reduced query execution time by 30% and provided actionable insights for cost-efficient logistics planning.</p></div>
-    <div class="card"><h3>Sales Dashboard</h3><p>Developed an <strong>interactive Power BI dashboard</strong> with KPIs, slicers, and <strong>DAX measures</strong> to track regional sales performance. Enabled management to monitor trends and make data-driven decisions in real time.</p></div>
-    <div class="card"><h3>Book Price Prediction</h3><p>Scraped book data using <strong>BeautifulSoup</strong>, cleaned datasets with <strong>Pandas</strong>, and applied <strong>Linear Regression</strong> to predict book prices. Achieved a prediction accuracy of ~85%, showcasing end-to-end data pipeline skills.</p></div>
-    <div class="card"><h3>YOLO Vehicle Detection</h3><p>Built a <strong>real-time vehicle detection system</strong> during internship at NIT Surathkal using <strong>YOLOv5 and OpenCV</strong>. Achieved ~90% detection accuracy and analyzed traffic flow patterns from CCTV footage.</p></div>
-    <div class="card"><h3>Windows Virtual Assistant</h3><p>Created a <strong>voice-controlled desktop assistant</strong> in Python integrating <strong>speech recognition, text-to-speech, and automation libraries</strong>. Automated tasks like opening applications, searching the web, and sending emails.</p></div>
-  </div>
-</section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">03 / PROJECTS</span>
+      <h2>Selected work</h2>
+    </div>
+    <div class="project-list">
 
-<section id="experience">
-  <h2>Experience</h2>
-  <div class="card">
-    <h3>Machine Learning Intern — NIT Surathkal</h3>
-    <p>Developed a <strong>YOLO-based vehicle detection and counting system</strong> achieving ~90% accuracy. Leveraged <strong>Python</strong> and <strong>OpenCV</strong> to analyze traffic flow patterns from CCTV footage, contributing to smart city traffic monitoring research.</p>
+      <div class="project">
+        <div class="pnum">01</div>
+        <div>
+          <h3>E-Commerce Customer Segmentation &amp; Recommendation Engine</h3>
+          <span class="stack">Python · Scikit-learn · Power BI</span>
+          <p>Engineered RFM (Recency, Frequency, Monetary) features from raw transaction data and applied K-Means clustering to segment customers into 3 behavioral groups. Built a content-based recommendation engine mapping each customer's top category to best-selling products, visualized in an interactive Power BI dashboard.</p>
+          <a href="https://github.com/Manavjha20" target="_blank" rel="noopener">View on GitHub →</a>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="pnum">02</div>
+        <div>
+          <h3>Target Customer Behavior &amp; Market Basket Analysis</h3>
+          <span class="stack">Python · Pandas · Seaborn</span>
+          <p>Cleaned and standardized a multi-thousand-row retail survey dataset, then explored demographics, purchase frequency, and satisfaction. Used K-Means clustering to classify customers into Frequent Buyers, Occasional, and At-Risk segments, surfacing key drivers of retention via correlation analysis.</p>
+          <a href="https://github.com/Manavjha20" target="_blank" rel="noopener">View on GitHub →</a>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="pnum">03</div>
+        <div>
+          <h3>Logistics Route &amp; Delivery Performance Analysis</h3>
+          <span class="stack">SQL · Window Functions · CTEs</span>
+          <p>Validated data integrity (duplicate IDs, referential checks, date logic) across 5 relational tables in a DHL-style logistics dataset. Used RANK() OVER (PARTITION BY ...) and CTEs to rank shipment delays by warehouse and route, identifying high-delay routes and underperforming delivery agents.</p>
+          <a href="https://github.com/Manavjha20" target="_blank" rel="noopener">View on GitHub →</a>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="pnum">04</div>
+        <div>
+          <h3>Sales &amp; Revenue Dashboards</h3>
+          <span class="stack">Power BI · DAX</span>
+          <p>Designed two interactive Power BI dashboards visualizing sales and revenue trends across products, regions, and time periods, with DAX measures and slicers for dynamic drill-down analysis.</p>
+          <a href="https://github.com/Manavjha20" target="_blank" rel="noopener">View on GitHub →</a>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="pnum">05</div>
+        <div>
+          <h3>Book Price Analysis &amp; Prediction</h3>
+          <span class="stack">Python · BeautifulSoup · Linear Regression</span>
+          <p>Scraped 1,000+ book listings with BeautifulSoup, cleaned pricing and rating data with regex, then trained a Linear Regression model to predict book price from rating and availability — a full scrape-to-model pipeline.</p>
+          <a href="https://github.com/Manavjha20" target="_blank" rel="noopener">View on GitHub →</a>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="pnum">06</div>
+        <div>
+          <h3>ML-Based Traffic Monitoring</h3>
+          <span class="stack">Python · YOLO · OpenCV</span>
+          <p>Built a YOLO-based vehicle detection system to classify and count vehicles in real time from CCTV footage during my internship at NIT Surathkal, generating traffic pattern insights for campus safety and management. Work recognized with a Letter of Recommendation.</p>
+          <a href="https://github.com/Manavjha20" target="_blank" rel="noopener">View on GitHub →</a>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="pnum">07</div>
+        <div>
+          <h3>Windows-Based Virtual Assistant</h3>
+          <span class="stack">Python · Speech Recognition</span>
+          <p>Built a voice-controlled desktop assistant for Windows, automating routine system tasks and enabling hands-free control of applications.</p>
+          <a href="https://github.com/Manavjha20/Virtual-Assistant" target="_blank" rel="noopener">View on GitHub →</a>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
 <section id="certifications">
-  <h2>Certifications</h2>
-  <ul>
-    <li><span class="icon">🎓</span><strong>Data Science with AI – Internshala:</strong> Completed a structured program covering <strong>Python, ML algorithms, and data visualization</strong>, applying concepts to real-world datasets.</li>
-    <li><span class="icon">🏢</span><strong>Accenture Data Analytics Simulation – For
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">04 / CERTIFICATIONS</span>
+      <h2>Learning, ongoing</h2>
+    </div>
+    <div class="cert-grid">
+      <div class="cert"><span class="dot"></span><div><div class="title">Data Science with AI</div><div class="org">Internshala Trainings — 6-month program</div></div></div>
+      <div class="cert"><span class="dot"></span><div><div class="title">Data Analytics &amp; Visualization Job Simulation</div><div class="org">Forage — Accenture North America</div></div></div>
+      <div class="cert"><span class="dot"></span><div><div class="title">Power BI Job Simulation</div><div class="org">Forage</div></div></div>
+      <div class="cert"><span class="dot"></span><div><div class="title">Introduction to Artificial Intelligence</div><div class="org">Infosys Springboard</div></div></div>
+      <div class="cert"><span class="dot"></span><div><div class="title">Introduction to Natural Language Processing</div><div class="org">Infosys Springboard</div></div></div>
+      <div class="cert"><span class="dot"></span><div><div class="title">Introduction to Data Science</div><div class="org">Simplilearn</div></div></div>
+      <div class="cert"><span class="dot"></span><div><div class="title">Fundamentals of Deep Learning</div><div class="org">NVIDIA</div></div></div>
+      <div class="cert"><span class="dot"></span><div><div class="title">Python &amp; SQL (Basic)</div><div class="org">HackerRank</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-box">
+      <div>
+        <h2>Let's talk data.</h2>
+        <p>Open to Data Analyst and Machine Learning roles. The fastest way to reach me is email or LinkedIn.</p>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:meekermanav@gmail.com"><span>EMAIL</span> meekermanav@gmail.com</a>
+        <a href="tel:+918541935212"><span>PHONE</span> +91 85419 35212</a>
+        <a href="https://linkedin.com/in/manav79" target="_blank" rel="noopener"><span>IN</span> linkedin.com/in/manav79</a>
+        <a href="https://github.com/Manavjha20" target="_blank" rel="noopener"><span>GH</span> github.com/Manavjha20</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Manav Kumar Jha. Built with HTML &amp; a lot of coffee.</footer>
+
+</body>
+</html>
